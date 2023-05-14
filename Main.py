@@ -1,16 +1,20 @@
 import csv
 import datetime
+import uuid
 # name = input()
 # body = input()
-time = datetime.datetime.today()
+# time = datetime.datetime.today()
+
 
 def create_note():
     # функция для создания заметки
     with open("Notes.csv", "a", newline="") as file:
         writer = csv.writer(file, delimiter=";")
-        name = input()
-        body = input()
-        writer.writerow(["ggh", name, body, time])
+        name = input("Enter a name of the note: ")
+        body = input("Enter the body of the note: ")
+        id = uuid.uuid4().hex
+        time = datetime.datetime.today()
+        writer.writerow([id, name, body, time])
 
 def read_note():
 #     # функция для чтения заметки
@@ -32,8 +36,8 @@ def read_notes():
 # def edit_note():
 #     # функция для редактирования заметки
 
-def delete_note():
-    # функция для удаления заметки
+# def delete_note():
+#     # функция для удаления заметки
 
 while True:
     user_input = input("Введите команду: ")
